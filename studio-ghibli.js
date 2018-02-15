@@ -6,32 +6,32 @@
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
             id: "title",
-            alias: "Title",
+            alias: "title",
             dataType: tableau.dataTypeEnum.string
 		}, {
             id: "description",
-            alias: "Description",
+            alias: "description",
             dataType: tableau.dataTypeEnum.string
 		}, {
             id: "director",
-            alias: "Director",
+            alias: "director",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "producer",
-            alias: "Producer",
+            alias: "producer",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "release_date",
-            alias: "Release Date",
-            dataType: tableau.dataTypeEnum.string
+            alias: "release_date",
+            dataType: tableau.dataTypeEnum.date
         }, {
             id: "rt_score",
-            alias: "Rotten Tomato Score",
-            dataType: tableau.dataTypeEnum.integer
+            alias: "rt_score",
+            dataType: tableau.dataTypeEnum.int
 		}];
 
         var tableSchema = {
-            id: "studio-ghibliapi",
+            id: "studioghibli",
             alias: "Studio Ghibli Movies",
             columns: cols
         };
@@ -67,7 +67,7 @@
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            tableau.connectionName = "Studio Ghibli Movies"; // This will be the data source name in Tableau
+            tableau.connectionName = "Studio Ghibli"; // This will be the data source name in Tableau
             tableau.submit(); // This sends the connector object to Tableau
         });
     });
