@@ -5,37 +5,34 @@
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
         var cols = [{
-            id: "id",
-            dataType: tableau.dataTypeEnum.string
-        }, {
             id: "title",
-            alias: "title",
+            alias: "Title",
             dataType: tableau.dataTypeEnum.string
 		}, {
             id: "description",
-            alias: "description",
+            alias: "Description",
             dataType: tableau.dataTypeEnum.string
 		}, {
             id: "director",
-            alias: "director",
+            alias: "Director",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "producer",
-            alias: "producer",
+            alias: "Producer",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "release_date",
-            alias: "release_date",
+            alias: "Release Date",
             dataType: tableau.dataTypeEnum.string
         }, {
             id: "rt_score",
-            alias: "rt_score",
-            dataType: tableau.dataTypeEnum.string
+            alias: "Rotten Tomato Score",
+            dataType: tableau.dataTypeEnum.integer
 		}];
 
         var tableSchema = {
-            id: "earthquakeFeed",
-            alias: "Earthquakes with magnitude greater than 4.5 in the last seven days",
+            id: "studio-ghibliapi",
+            alias: "Studio Ghibli Movies",
             columns: cols
         };
 
@@ -51,7 +48,6 @@
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableData.push({
-                    "id": feat[i].id,
                     "title": feat[i].title,
 					"description": feat[i].description,
                     "director": feat[i].director,
@@ -71,7 +67,7 @@
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
-            tableau.connectionName = "USGS Earthquake Feed"; // This will be the data source name in Tableau
+            tableau.connectionName = "Studio Ghibli Movies"; // This will be the data source name in Tableau
             tableau.submit(); // This sends the connector object to Tableau
         });
     });
